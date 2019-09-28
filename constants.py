@@ -5,4 +5,6 @@
 # input(s)：
 # output(s)：
 
-LAMBDA = 2.0
+LAMBDA = 1.0
+
+ITA = 1.0
