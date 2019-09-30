@@ -67,12 +67,6 @@ def Q_energy(X, Y, W):
     return Q
 
 
-def Q_energy_fun(X, Y, K, param):
-    Q_1 = np.square(np.linalg.norm(X - Y - np.dot(K, param)))
-    Q_2 = (constants.LAMBDA / 2) * (np.dot(np.transpose(param), K, param))
-    Q = Q_1 + Q_2
-    return Q
-
 X = np.array([[1, 2], [2, 1], [2, 3], [3, 2], [4, 3], [5, 1], [15, 10], [-1, -1]])
 Y = np.array([[0, 2], [2, 2], [2, 4], [2, 3], [3, 3], [4, 10], [-1, -1], [-100, -100]])
 # X = np.array([[2, 2], [3, 1], [3, 3]])
@@ -84,9 +78,6 @@ plt.ion()
 for i in range(50):
    W = solve_param(X, Y)
    Y = Y + np.dot(gaussian_kernel(Y), W)
-
-   Q = Q_energy(X, Y, W)
-   print(Q)
 
    plt.scatter(np.transpose(X)[0, :], np.transpose(X)[1, :])
    plt.scatter(np.transpose(Y)[0, :], np.transpose(Y)[1, :], c='r')
